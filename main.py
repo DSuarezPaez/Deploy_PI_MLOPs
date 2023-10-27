@@ -38,8 +38,8 @@ def developer_free(desarrollador: str):
 
     result_dicc1 = {
         "Año": df_group1['Año'].to_dict(),
-        "Cantidad de items": df_group1['Cantidad de items'].to_dict(),
-        "% contenido free": df_group1['% contenido free'].to_dict()
+        "Cantidad de items": df_group1['Cantidad de items'].tolist(),
+        "% contenido free": df_group1['% contenido free'].tolist()
     }
 
     return result_dicc1
