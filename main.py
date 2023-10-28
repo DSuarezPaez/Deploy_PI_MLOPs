@@ -4,6 +4,8 @@ Define las rutas API y la lógica para manejar solicitudes.
 """
 from fastapi import FastAPI
 import pandas as pd
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 app = FastAPI()
 
@@ -159,3 +161,42 @@ def developer(desarrolladora: str):
     }
 
     return result_dicc5
+
+
+@app.get('/recomendacion_juego/{item_id}')
+def recomendacion_juego(item_id):
+
+    """Ingresando el id de un usuario, deberíamos recibir una lista con 5 juegos recomendados para dicho usuario"""
+
+    data = pd.read_csv('juegos_steam.csv')
+    data_juegos_steam = pd.read_csv('juegos_id.csv')
+
+    tfidv = TfidfVectorizer(min_df=2, max_df=0.7, token_pattern=r'\b[a-zA-Z0-9]\w+\b')
+    data_vector = tfidv.fit_transform(data['features'])
+
+    data_vector_df = pd.DataFrame(data_vector.toarray(), index=data['item_id'], columns = tfidv.get_feature_names_out())
+
+    vector_similitud_coseno = cosine_similarity(data_vector_df.values)
+
+    cos_sim_df = pd.DataFrame(vector_similitud_coseno, index=data_vector_df.index, columns=data_vector_df.index)
+
+    juego_simil = cos_sim_df.loc[item_id]
+
+    simil_ordenada = juego_simil.sort_values(ascending=False)
+    resultado = simil_ordenada.head(6).reset_index()
+
+    result_df = resultado.merge(data_juegos_steam, on='item_id',how='left')
+
+    # Obtén el título del juego de entrada.
+    juego_title = data_juegos_steam[data_juegos_steam['item_id'] == item_id]['title'].values[0]
+
+    # Crea un mensaje de salida
+    message = f"Si te gustó el juego {item_id} : {juego_title}, también te pueden gustar:"
+
+    # Crea un diccionario de retorno de la funcion
+    result_dict = {
+        'message': message,
+        'recommended_games': result_df['title'][1:6].tolist()
+    }
+
+    return result_dict
