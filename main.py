@@ -195,8 +195,8 @@ def recomendacion_juego(item_id : int):
 
     # Crea un diccionario de retorno de la funcion
     result_dict = {
-        'message': message,
-        'recommended_games': result_df['title'][1:6].tolist()
+        'mensaje': message,
+        'juegos_recomendados': result_df['title'][1:6].tolist()
     }
 
     return result_dict
