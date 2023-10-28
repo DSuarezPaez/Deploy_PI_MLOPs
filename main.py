@@ -164,7 +164,7 @@ def developer(desarrolladora: str):
 
 
 @app.get('/recomendacion_juego/{item_id}')
-def recomendacion_juego(item_id):
+def recomendacion_juego(item_id : int):
 
     """Ingresando el id de un usuario, deberíamos recibir una lista con 5 juegos recomendados para dicho usuario"""
 
