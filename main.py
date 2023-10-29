@@ -166,7 +166,7 @@ def developer(desarrolladora: str):
 @app.get('/recomendacion_juego/{item_id}')
 def recomendacion_juego(item_id : int):
 
-    """Ingresando el id de un usuario, deberíamos recibir una lista con 5 juegos recomendados para dicho usuario"""
+    """Ingresando el id de un juego, deberíamos recibir una lista con 5 juegos recomendados para dicho usuario"""
 
     data = pd.read_csv('juegos_steam.csv')
     data_juegos_steam = pd.read_csv('juegos_id.csv')
