@@ -9,7 +9,7 @@ Enlace de GitHub: https://github.com/DSuarezPaez/Deploy_PI_MLOPs
 
 Enlace de deployment: https://deploy-dsuarez-mlops.onrender.com/docs
 
-Enlace de video: 
+Enlace de video: https://youtu.be/ZFEUi9e2Pzs
 
 El objetivo principal del proyecto fué desarrollar una API para disponibilizar los datos de la empresa usando el framework FastAPI. A través de la misma se pueden hacer consultas especificas a una base de datos filtrada, donde se garantiza luego de exhaustivo trabajo de ETL la integridad y calidad de los datos a ser consultados.
 
