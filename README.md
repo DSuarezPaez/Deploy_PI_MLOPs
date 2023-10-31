@@ -1,6 +1,6 @@
 # <h1 align=center> **PROYECTO INDIVIDUAL Nº1**
 # <h1 align=center> **Daniel Suárez**
-### <h1 align=center> Machine Learning Operations (MLOps)
+### <h1 align=center> `Machine Learning Operations` (MLOps)
 
 
 El siguiente proyecto consiste en crear un modelo de ML que pretende solucionar un problema de negocio: Steam solicita crear un sistema de recomendación de videojuegos para usuarios. Durante el desarrollo del proyecto se realizaron trabajos de Data Engineer para obtener un MVP (Minimum Viable Product) enfocado en la consulta de algunos datos específicos y en la recomendación de juegos similares a otros juegos que serán proporcionados por el usuario de Steam.
@@ -13,7 +13,7 @@ Enlace de video: https://youtu.be/ZFEUi9e2Pzs
 
 El objetivo principal del proyecto fué desarrollar una API para disponibilizar los datos de la empresa usando el framework FastAPI. A través de la misma se pueden hacer consultas especificas a una base de datos filtrada, donde se garantiza luego de exhaustivo trabajo de ETL la integridad y calidad de los datos a ser consultados.
 
-## <h1 align=center> **Extracción, Transformación y Carga de Datos (Descripción General)**
+## <h1 align=center> **`Extracción, Transformación y Carga de Datos (Descripción General)`**
 
 Carpeta: ETL
 
@@ -92,7 +92,7 @@ Para esta parte se realiza la limpieza, transformación y fusión de datos en m�
 
 5.	`steam.to_csv('data_steam.csv', index=False)`: la función `to_csv()` se usa para escribir el DataFrame en un archivo CSV. Aquí, se utiliza para guardar el DataFrame 'steam' en un archivo llamado 'data_steam.csv'.
 
-## <h1 align=center> **Análisis de Datos Exploratorio** 
+## <h1 align=center> **`Análisis de Datos Exploratorio`** 
 
 Documento: EDA_PI.ipynb
 
@@ -109,7 +109,7 @@ El siguiente paso es el tratamiento de las variables categóricas, las cuales fu
 
 Luego se analiza la correlación de las variables con la variable objetivo (‘item_id’), para esto se utilizaron dos métodos, por un lado, se calculó una matriz de correlación y posteriormente se graficó para observar de manera más visual la correlación del DataFrame, por otro lado, se usó el método de SelectKBest(mutual_info_classif, k), que se utiliza para seleccionar las mejores k características en función de sus puntuaciones. La función de puntuación utilizada para evaluar las características se puede especificar utilizando el parámetro score_func. En este caso, mutual_info_classif es la función de puntuación que se está utilizando. Estima la información mutua entre cada característica y la variable objetivo para variables objetivo discretas. En ambos casos se determinó que las variables, características o etiquetas más relacionadas son: título, desarrollador, año de lanzamiento, precio, tiempo de juego y género.
 
-## <h1 align=center> **Machine Learning**
+## <h1 align=center> **`Machine Learning`**
 
 Documento: ML_PI_SC.ipynb
 
@@ -154,7 +154,7 @@ Las siguientes tres líneas crean un mensaje recomendando los 5 mejores juegos m
 `return result_dict`
  esta línea devuelve el diccionario que contiene el mensaje y los juegos recomendados.
 
-## <h1 align=center> **Funciones y API**
+## <h1 align=center> **`Funciones y API`**
 
 Documento: main.py
 
@@ -175,5 +175,9 @@ Los endpoints incluyen:
 - `/recomendacion_juego/{item_id}`: Este endpoint devuelve una lista de 5 juegos recomendados para un id de juego determinado.
 
 Cada función de endpoint lee el conjunto de datos del archivo CSV, realiza algún procesamiento con pandas y luego devuelve una respuesta. La respuesta suele ser un diccionario o una lista de diccionarios que contiene los resultados del análisis.
+
+Nota: para hacer las consultas efectivas, se debe escribir en el campo respetando las mayusculas y minuscula.
+
+Por ejemplo: en el caso de la primera función, se introduce el dato de esta manera, 'Valve', si se escribe 'valve' (con minuscula), no devolverá una respuesta a la consulta.
 
 El estatus correspondiente al proyecto es de: completo/publicado.
