@@ -53,6 +53,7 @@ Documento: ETL_reviews.ipynb
 2.	`data_re3['year_posted'] = data_re3['posted'].str.extract('(\d{4})')`: Esta línea crea una nueva columna 'year_posted' extrayendo el año del 'publicado' ' columna usando una expresión regular.
 
 3.	`data_re3['recommend'] = data_re3['recommend'].replace({'False': 0, 'True': 1}).astype(int)`: esta línea reemplaza los valores booleanos 'True' y ' Falso' en la columna ' recommend ' con 1 y 0, respectivamente, y cambia el tipo de datos de la columna a entero.
+
 4.	La función `get_sentiment(text)` está definida para analizar el sentimiento del texto utilizando la biblioteca TextBlob. Devuelve 0 si la polaridad del sentimiento es menor que -0.1 (negativo), 2 si es mayor que 0,1 (positivo) y 1 en caso contrario (neutral).
 
 5.	`data_re3['sentiment_analysis'] = data_re3['review'].apply(get_sentiment)`: esta línea aplica la función `get_sentiment()` a la columna 'review' y almacena los resultados en una nueva columna 'sentiment_analysis' .
@@ -179,5 +180,10 @@ Cada función de endpoint lee el conjunto de datos del archivo CSV, realiza alg�
 Nota: para hacer las consultas efectivas, se debe escribir en el campo respetando las mayusculas y minuscula.
 
 Por ejemplo: en el caso de la primera función, se introduce el dato de esta manera, 'Valve', si se escribe 'valve' (con minuscula), no devolverá una respuesta a la consulta.
+
+Contacto:
+
+linkedin - https://www.linkedin.com/in/daniel-suarez-58a393264/
+email - suarezdanieljo@gmail.com
 
 El estatus correspondiente al proyecto es de: completo/publicado.
